@@ -1,0 +1,8 @@
+- name: Installation of Cinder
+  apt:
+    name:
+       - cinder-volume
+       - python3-mysqldb
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"

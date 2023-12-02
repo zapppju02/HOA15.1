@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: Ubuntu Update
+    tags: always
+    apt:
+      update_cache: yes
+      upgrade: dist
+    when: ansible_distribution == "ubuntu"
+
+
+- hosts: server1
+  become: true
+  roles:
+    - role: neutron
+    - role: horizon
+    - role: cinder
